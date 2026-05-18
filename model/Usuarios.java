@@ -1,33 +1,27 @@
-public class Usuarios {
-    private String nome, email, telefone;
+public class Usuarios extends Pessoa{
+    private int id;
+    private boolean EmpretivoAtivo;
 
-    public Usuarios(String email, String nome, String telefone) {
-        this.email = email;
-        this.nome = nome;
-        this.telefone = telefone;
+    public Usuarios(boolean EmpretivoAtivo, int id, String email, String nome, String telefone, String endereco) {
+        super(email, nome, telefone, endereco);
+        this.EmpretivoAtivo = EmpretivoAtivo;
+        this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public int getId() {
+        return id;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public boolean isEmpretivoAtivo() {
+        return EmpretivoAtivo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmpretivoAtivo(boolean EmpretivoAtivo) {
+        this.EmpretivoAtivo = EmpretivoAtivo;
     }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    
 }
