@@ -1,20 +1,12 @@
-public class Livros {
-    private String autor, titulo, categoria;
+public class Livros extends ItemBiblioteca{
+    private String autor, titulo;
     private int anoPublicacao;
 
-    public Livros(int anoPublicacao, String autor, String categoria, String titulo) {
+    public Livros(int anoPublicacao, String autor, String titulo, String categoria, int codigo, int quantDisponivel) {
+        super(categoria, codigo, quantDisponivel);
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;
-        this.categoria = categoria;
         this.titulo = titulo;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getAutor() {
