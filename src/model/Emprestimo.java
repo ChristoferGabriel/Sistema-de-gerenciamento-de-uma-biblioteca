@@ -22,6 +22,10 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 
+    public Emprestimo(Livro livro2, Usuario usuario2) {
+        //TODO Auto-generated constructor stub
+    }
+
     public long CalcularAtraso(){
         LocalDate devolucao = datadevolucaoEfetiva != null
         ?datadevolucaoEfetiva: LocalDate.now();
@@ -69,6 +73,14 @@ public class Emprestimo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
+    }
+
+    public void setDataEmprestimo(LocalDate dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
     }
 }
 
