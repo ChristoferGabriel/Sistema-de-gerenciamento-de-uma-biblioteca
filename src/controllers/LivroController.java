@@ -1,11 +1,10 @@
     package controllers;
 
 
-import interfaces.Gerenciavel;
     import java.util.ArrayList;
     import model.Livro;
 
-    public class LivroController implements Gerenciavel {
+    public class LivroController {
 
         private ArrayList<Livro> livros = new ArrayList<>();
 
@@ -19,19 +18,4 @@ import interfaces.Gerenciavel;
                 System.out.println(livro.getTitulo());
             }
         }
-
-    @Override
-    public String cadastrar() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public String Remover() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public String Buscar() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
     }

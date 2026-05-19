@@ -36,6 +36,7 @@ public class Emprestimo {
 
     public void devolverLivro(){
         datadevolucaoEfetiva = LocalDate.now();
+        devolvido = true;
     }
 
     public Livro getLivro() {
