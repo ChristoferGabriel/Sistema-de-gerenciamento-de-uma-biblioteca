@@ -8,11 +8,11 @@ public class Emprestimo {
     private LocalDate datadevolucaoEfetiva;
     private int id;
     private boolean devolvido;
-    private Livros livro;
-    private Usuarios usuario;
+    private Livro livro;
+    private Usuario usuario;
 
-    public Emprestimo(LocalDate dataEmprestimo, LocalDate datadevolucaoEfetiva, LocalDate datadevolucaoPrevista, boolean devolvido, int id, Livros livro, Usuarios usuario) {
-        this.dataEmprestimo = LocalDate.now();
+    public Emprestimo(LocalDate datadevolucaoEfetiva, LocalDate datadevolucaoPrevista, boolean devolvido, int id, Livro livro, Usuario usuario) {
+        dataEmprestimo = LocalDate.now();
         this.datadevolucaoEfetiva = datadevolucaoEfetiva = null;
         this.datadevolucaoPrevista = LocalDate.now().plusDays(14);
         this.devolvido = devolvido;
@@ -30,6 +30,10 @@ public class Emprestimo {
     }
     public boolean estaAtrasado(){
         return CalcularAtraso() > 0;
+    }
+
+    public void devolverLivro(){
+        datadevolucaoEfetiva = LocalDate.now();
     }
 }
 
