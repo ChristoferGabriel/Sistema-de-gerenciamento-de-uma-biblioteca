@@ -28,5 +28,8 @@ public class Emprestimo {
         long dias = ChronoUnit.DAYS.between(datadevolucaoPrevista, devolucao);
         return dias > 0 ? dias : 0;
     }
+    public boolean estaAtrasado(){
+        return CalcularAtraso() > 0;
+    }
 }
 

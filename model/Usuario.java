@@ -1,8 +1,8 @@
-public class Usuarios extends Pessoa{
+public class Usuario extends Pessoa{
     private int id;
     private boolean EmpretivoAtivo;
 
-    public Usuarios(boolean EmpretivoAtivo, int id, String email, String nome, String telefone, String endereco) {
+    public Usuario(boolean EmpretivoAtivo, int id, String email, String nome, String telefone, String endereco) {
         super(email, nome, telefone, endereco);
         this.EmpretivoAtivo = EmpretivoAtivo;
         this.id = id;
