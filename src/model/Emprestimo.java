@@ -29,12 +29,45 @@ public class Emprestimo {
         long dias = ChronoUnit.DAYS.between(datadevolucaoPrevista, devolucao);
         return dias > 0 ? dias : 0;
     }
+    
     public boolean estaAtrasado(){
         return CalcularAtraso() > 0;
     }
 
     public void devolverLivro(){
         datadevolucaoEfetiva = LocalDate.now();
+    }
+
+    public Livro getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livro livro) {
+        this.livro = livro;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public boolean isDevolvido() {
+        return devolvido;
+    }
+
+    public void setDevolvido(boolean devolvido) {
+        this.devolvido = devolvido;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
 
