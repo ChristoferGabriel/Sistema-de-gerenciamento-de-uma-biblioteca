@@ -1,3 +1,5 @@
+package model;
+
 public abstract class Pessoa{
     private String nome, email, telefone, endereco;
 

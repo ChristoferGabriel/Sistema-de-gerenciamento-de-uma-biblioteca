@@ -1,3 +1,5 @@
+package model;
+
 public abstract class ItemBiblioteca {
     private int quantDisponivel, codigo;
     private String categoria;
