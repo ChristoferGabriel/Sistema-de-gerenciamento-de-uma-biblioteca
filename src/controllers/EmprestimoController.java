@@ -98,9 +98,9 @@ public class EmprestimoController {
                 System.out.println(
                     e.getUsuario().getNome()
                     + " está com atraso de "  +
-                    atraso + " dias."
-                
-                );
+                    atraso + " dias.");
+                System.out.println("==========================");
+            
             }
 
         }
