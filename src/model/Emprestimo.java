@@ -12,17 +12,15 @@ public class Emprestimo {
     private Usuario usuario;
 
     public Emprestimo(LocalDate dataDevolucaoEfetiva, LocalDate dataDevolucaoPrevista, boolean devolvido, int id, Livro livro, Usuario usuario) {
-        dataEmprestimo = LocalDate.now();
+        this.dataEmprestimo = LocalDate.now();
         this.dataDevolucaoEfetiva = dataDevolucaoEfetiva = null;
         this.dataDevolucaoPrevista = LocalDate.now().plusDays(14);
-        this.devolvido = devolvido;
+        this.devolvido = false;
         this.id = id;
         this.livro = livro;
         this.usuario = usuario;
     }
 
-    public Emprestimo(Livro livro2, Usuario usuario2) {
-    }
 
     public void devolverLivro(){
         dataDevolucaoEfetiva = LocalDate.now();

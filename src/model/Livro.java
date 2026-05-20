@@ -34,4 +34,13 @@ public class Livro extends ItemBiblioteca{
     public void setAnoPublicacao(int anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
+
+    @Override
+    public String toString() {
+        return "Livro {autor = " + autor + 
+                ", titulo = " + titulo + 
+                ", anoPublicacao = " + anoPublicacao + 
+                 "Codigo = " + getCodigo() + "}";
+    }  
+
 }
