@@ -1,5 +1,6 @@
 package controllers;
 
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import model.Emprestimo;
@@ -81,6 +82,26 @@ public class EmprestimoController {
             System.out.println("Usuario: " + e.getUsuario().getNome());
             System.out.println("Previsto: " + e.getDataDevolucaoPrevista());
             System.out.println("=======================================");
+
+        }
+    }
+
+    public void ListarAtrasos(){
+
+        LocalDate hoje = LocalDate.now();
+
+        for(Emprestimo e : emprestimos){
+            if (!e.isDevolvido() && hoje.isAfter(e.getDataDevolucaoPrevista())) {
+                
+                long atraso = ChronoUnit.DAYS.between(e.getDataDevolucaoPrevista(), hoje);
+            
+                System.out.println(
+                    e.getUsuario().getNome()
+                    + " está com atraso de "  +
+                    atraso + " dias."
+                
+                );
+            }
 
         }
     }
