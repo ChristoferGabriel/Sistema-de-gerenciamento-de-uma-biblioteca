@@ -1,21 +1,20 @@
 package model; 
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 
 public class Emprestimo {
     private LocalDate dataEmprestimo;
-    private LocalDate datadevolucaoPrevista;
-    private LocalDate datadevolucaoEfetiva;
+    private LocalDate dataDevolucaoPrevista;
+    private LocalDate dataDevolucaoEfetiva;
     private int id;
     private boolean devolvido;
     private Livro livro;
     private Usuario usuario;
 
-    public Emprestimo(LocalDate datadevolucaoEfetiva, LocalDate datadevolucaoPrevista, boolean devolvido, int id, Livro livro, Usuario usuario) {
+    public Emprestimo(LocalDate dataDevolucaoEfetiva, LocalDate dataDevolucaoPrevista, boolean devolvido, int id, Livro livro, Usuario usuario) {
         dataEmprestimo = LocalDate.now();
-        this.datadevolucaoEfetiva = datadevolucaoEfetiva = null;
-        this.datadevolucaoPrevista = LocalDate.now().plusDays(14);
+        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva = null;
+        this.dataDevolucaoPrevista = LocalDate.now().plusDays(14);
         this.devolvido = devolvido;
         this.id = id;
         this.livro = livro;
@@ -23,23 +22,10 @@ public class Emprestimo {
     }
 
     public Emprestimo(Livro livro2, Usuario usuario2) {
-        //TODO Auto-generated constructor stub
-    }
-
-    public long CalcularAtraso(){
-        LocalDate devolucao = datadevolucaoEfetiva != null
-        ?datadevolucaoEfetiva: LocalDate.now();
-
-        long dias = ChronoUnit.DAYS.between(datadevolucaoPrevista, devolucao);
-        return dias > 0 ? dias : 0;
-    }
-    
-    public boolean estaAtrasado(){
-        return CalcularAtraso() > 0;
     }
 
     public void devolverLivro(){
-        datadevolucaoEfetiva = LocalDate.now();
+        dataDevolucaoEfetiva = LocalDate.now();
         devolvido = true;
     }
 
@@ -81,6 +67,22 @@ public class Emprestimo {
 
     public void setDataEmprestimo(LocalDate dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public LocalDate getDataDevolucaoPrevista() {
+        return dataDevolucaoPrevista;
+    }
+
+    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
+        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
+    }
+
+    public LocalDate getDataDevolucaoEfetiva() {
+        return dataDevolucaoEfetiva;
+    }
+
+    public void setDataDevolucaoEfetiva(LocalDate dataDevolucaoEfetiva) {
+        this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
     }
 }
 
