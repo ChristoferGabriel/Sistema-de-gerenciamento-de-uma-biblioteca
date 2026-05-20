@@ -1,8 +1,8 @@
 package interfaces;
 
+
 public interface Gerenciavel {
-    String cadastrar();
-    String Remover();
-    String Buscar();
+    boolean estaDisponivel();
+    String getCodigoIdentificador();    
     
 }
