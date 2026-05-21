@@ -20,9 +20,7 @@ public class ConsoleView {
         this.usuarios = new ArrayList<>();
         this.scanner = new Scanner(System.in);
     }
-    public void adicionarUsuario(Usuario usuario) {
-        this.usuarios.add(usuario);
-    }
+
     private int lerOpcaoSegura() {
     while (!scanner.hasNextInt()) {
         System.out.println("Por favor, digite um número válido.");
