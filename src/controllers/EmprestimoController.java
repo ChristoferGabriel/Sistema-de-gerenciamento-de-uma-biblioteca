@@ -16,35 +16,64 @@ public class EmprestimoController {
     }
 
     
-    public void RealizarEmprestimos(Usuario usuario, Livro livro){
-        if (usuario.isEmpretivoAtivo()){
-            System.out.println("Usuario ja possui um livro emprestado");
-            return;
+    public void RealizarEmprestimos(Usuario usuario, Livro livro) {
+
+    try {
+
+        if (usuario == null) {
+            throw new Exception("Usuário não encontrado.");
         }
 
-        if(livro.getQuantDisponivel() <= 0){
-            System.out.println("livro indisponivel");
-            return;
+        if (livro == null) {
+            throw new Exception("Livro não encontrado.");
+        }
+
+        if (usuario.isEmpretivoAtivo()) {
+            throw new Exception(
+                "Usuário já possui empréstimo."
+            );
+        }
+
+        if (livro.getQuantDisponivel() <= 0) {
+            throw new Exception(
+                "Livro indisponível."
+            );
         }
 
         livro.setQuantDisponivel(
             livro.getQuantDisponivel() - 1
         );
-    
+
+        livro.setTotalEmprestimos(
+            livro.getTotalEmprestimos() + 1
+        );
+
         usuario.setEmpretivoAtivo(true);
 
-        Emprestimo emprestimo = new Emprestimo(livro, usuario);
-        
-        emprestimos.add(emprestimo);
+            Emprestimo emprestimo =
+                new Emprestimo(livro, usuario);
 
-        System.out.println("emprestimo realizado com sucesso.");
+            emprestimos.add(emprestimo);
+
+            System.out.println("Empréstimo realizado com sucesso.");
+
+        } catch (Exception e) {
+
+            System.out.println("Erro ao realizar empréstimo: " + e.getMessage());
+        }
     }
 
-    public void devolverLivro(Emprestimo emprestimo){
-        if(emprestimo.isDevolvido()){
-            System.out.println("Livro devolvido");
-            return;
-        } 
+    public void devolverLivro(Emprestimo emprestimo) {
+
+    try {
+
+        if (emprestimo == null) {
+            throw new Exception("Empréstimo não encontrado.");
+        }
+
+        if (emprestimo.isDevolvido()) {
+            throw new Exception("Livro já devolvido.");
+        }
 
         emprestimo.devolverLivro();
 
@@ -58,16 +87,22 @@ public class EmprestimoController {
 
         usuario.setEmpretivoAtivo(false);
 
-        long diasAtraso = 
+        long diasAtraso =
             ChronoUnit.DAYS.between(
-            emprestimo.getDataDevolucaoPrevista(),
-            emprestimo.getDataDevolucaoEfetiva()
-        );
+                emprestimo.getDataDevolucaoPrevista(),
+                emprestimo.getDataDevolucaoEfetiva()
+            );
 
-        if(diasAtraso > 0){
-            System.out.println("Livro foi devolvido com atraso de " + diasAtraso + "dias");
+        if (diasAtraso > 0) {
+
+            System.out.println("Livro devolvido com atraso de " + diasAtraso + " dias.");
+
         } else {
-            System.out.println("livro devolvido no prazo");
+            System.out.println("Livro devolvido no prazo.");
+        }
+
+        } catch (Exception e) {
+            System.out.println("Erro na devolução: " + e.getMessage());
         }
     }
 

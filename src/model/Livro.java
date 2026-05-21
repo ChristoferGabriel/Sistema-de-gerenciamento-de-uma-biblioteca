@@ -6,7 +6,7 @@ public class Livro extends ItemBiblioteca{
     private int anoPublicacao, totalEmprestimos;
     private String autor, titulo, categoria;
 
-    public Livro(int anoPublicacao, String autor, String categoria, String titulo, int codigo, int quantDisponivel, int totalEmprestimos) {
+    public Livro(int anoPublicacao, String autor, String categoria, String titulo, int codigo, int quantDisponivel) {
         super(codigo, quantDisponivel);
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;

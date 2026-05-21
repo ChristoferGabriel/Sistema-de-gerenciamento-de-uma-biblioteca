@@ -13,6 +13,10 @@ import model.Livro;
             livros = new ArrayList<>();
         }
 
+        public List<Livro> getLivros() {
+            return livros;
+        }
+
         public void cadastrarLivro(Livro livro) {
 
         if(BuscarPorcodigo(livro.getCodigo()) != null){
@@ -93,14 +97,21 @@ import model.Livro;
 
         public void listarLivros() {
 
-            for (Livro livro : livros) {
-                System.out.println("==================");
-                System.out.println("Titulo: " + livro.getTitulo());
-                System.out.println("Autor: " + livro.getAutor());
-                System.out.println("Codigo: " + livro.getCodigo());
-                System.out.println("Quantidade disponivel" + livro.getQuantDisponivel());
+        try {
 
-            }
-            
+        if (livros.isEmpty()) {
+            throw new Exception(
+                "Nenhum livro cadastrado."
+            );
+        }
+
+        for (Livro livro : livros) {
+            System.out.println("==================");
+            System.out.println(livro);
+        }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
+}
