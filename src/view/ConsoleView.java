@@ -3,10 +3,8 @@ package view;
 import controllers.EmprestimoController;
 import controllers.LivroController;
 import controllers.UsuarioController;
-
 import java.util.List;
 import java.util.Scanner;
-
 import model.Emprestimo;
 import model.Livro;
 import model.Usuario;
@@ -227,11 +225,7 @@ public class ConsoleView {
             emprestimoController.devolverLivro(emprestimo);
 
         } catch (Exception e) {
-
-            System.out.println(
-                "Erro na devolução: "
-                + e.getMessage()
-            );
+            System.out.println("Erro na devolução: "+ e.getMessage());
         }
     }
 }
