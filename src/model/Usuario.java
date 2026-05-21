@@ -25,5 +25,16 @@ public class Usuario extends Pessoa{
     public void setEmpretivoAtivo(boolean EmpretivoAtivo) {
         this.EmpretivoAtivo = EmpretivoAtivo;
     }
+
+    @Override
+    public String toString() {
+
+        return
+        "ID: " + id +
+        "\nNome: " + getNome() +
+        "\nEmail: " + getEmail() +
+        "\nTelefone: " + getTelefone() +
+        "\nEndereço: " + getEndereco();
+    }
     
 }

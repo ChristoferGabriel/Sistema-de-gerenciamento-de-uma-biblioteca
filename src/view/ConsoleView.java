@@ -65,6 +65,7 @@ public class ConsoleView {
         System.out.println("8 - Listar atrasos");
         System.out.println("9 - Livros mais populares");
         System.out.println("10 - Listar usuários");
+        System.out.println("11 - Cadastrar usuário");
         System.out.println("0 - Sair");
 
         System.out.print("\nEscolha: ");
@@ -118,6 +119,10 @@ public class ConsoleView {
                 case 10:
                     usuarioController.listarUsuarios();
                     break;
+
+                case 11:
+                    cadastrarUsuario();
+                break;      
 
                 case 0:
                     System.out.println("Sistema encerrado.");
@@ -249,6 +254,48 @@ public class ConsoleView {
 
         } catch (Exception e) {
             System.out.println("Erro na devolução: "+ e.getMessage());
+        }
+    }
+
+    private void cadastrarUsuario() {
+
+    try {
+
+        System.out.println("===== CADASTRO DE USUÁRIO =====");
+
+        System.out.print("ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.print("Endereço: ");
+        String endereco = scanner.nextLine();
+
+        Usuario usuario = new Usuario(
+            false,
+            id,
+            email,
+            nome,
+            telefone,
+            endereco
+        );
+
+        usuarioController.cadastrarUsuario(usuario);
+
+        } catch (NumberFormatException e) {
+
+            System.out.println("Digite um ID válido.");
+
+        } catch (Exception e) {
+
+        System.out.println("Erro ao cadastrar usuário: "+ e.getMessage());
         }
     }
 }
