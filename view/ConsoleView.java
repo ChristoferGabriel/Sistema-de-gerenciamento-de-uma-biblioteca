@@ -74,7 +74,7 @@ public class ConsoleView {
                 }
                 System.out.print("Digite o código do Livro: ");
                 int codLivro = Integer.parseInt(scanner.nextLine());
-                Livro livroEmprestimo = new Livro(2023, "Autor Fictício", "Livro Fictício", "Categoria", codLivro, 1);
+                Livro livroEmprestimo = LivroController.BuscarPorcodigo();
 
                 emprestimoController.RealizarEmprestimos(usuarioEmprestimo, livroEmprestimo);
                 break;
