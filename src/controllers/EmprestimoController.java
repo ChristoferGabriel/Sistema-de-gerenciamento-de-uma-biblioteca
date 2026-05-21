@@ -32,6 +32,11 @@ public class EmprestimoController {
         usuario.setEmpretivoAtivo(true);
 
         Emprestimo emprestimo = new Emprestimo(livro, usuario);
+        /*linha 34 do codigo não está funcionando erro:constructor Emprestimo in class Emprestimo cannot be applied to given types;
+    required: LocalDate,LocalDate,boolean,int,Livro,Usuario
+    found:    Livro,Usuario
+    reason: actual and formal argument lists differ in length
+    The constructor Emprestimo(Livro, Usuario) is undefined*/
 
         emprestimos.add(emprestimo);
 
