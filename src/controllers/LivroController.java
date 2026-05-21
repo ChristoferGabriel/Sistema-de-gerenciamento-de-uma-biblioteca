@@ -25,7 +25,12 @@ import model.Livro;
         public void listarLivros() {
 
             for (Livro livro : livros) {
-                System.out.println(livro.getTitulo());
+                System.out.println("==================");
+                System.out.println("Titulo: " + livro.getTitulo());
+                System.out.println("Autor: " + livro.getAutor());
+                System.out.println("Codigo: " + livro.getCodigo());
+                System.out.println("Quantidade disponivel" + livro.getQuantDisponivel());
+
             }
             
         }
