@@ -18,7 +18,9 @@ import model.Livro;
         System.out.println("livro cadastrado com sucesso");
         }
 
-
+        public void BuscarPorId(){
+            
+        }
 
         public void listarLivros() {
 

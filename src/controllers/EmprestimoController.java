@@ -16,14 +16,12 @@ public class EmprestimoController {
 
     public void RealizarEmprestimos(Usuario usuario, Livro livro){
         if (usuario.isEmpretivoAtivo()){
-
             System.out.println("Usuario ja possui um livro emprestado");
             return;
         }
 
         if(livro.getQuantDisponivel() <= 0){
-
-        System.out.println("livro indisponivel");
+            System.out.println("livro indisponivel");
             return;
         }
 
@@ -42,7 +40,6 @@ public class EmprestimoController {
 
     public void devolverLivro(Emprestimo emprestimo){
         if(emprestimo.isDevolvido()){
-
             System.out.println("Livro devolvido");
             return;
         } 
@@ -67,42 +64,41 @@ public class EmprestimoController {
 
         if(diasAtraso > 0){
             System.out.println("Livro foi devolvido com atraso de " + diasAtraso + "dias");
-
         } else {
-
             System.out.println("livro devolvido no prazo");
-
         }
     }
 
     public void ListarEmprestimo(){
         for( Emprestimo e : emprestimos){
-
             System.out.println("Livro: " + e.getLivro().getTitulo());
             System.out.println("Usuario: " + e.getUsuario().getNome());
             System.out.println("Previsto: " + e.getDataDevolucaoPrevista());
             System.out.println("=======================================");
-
         }
     }
 
     public void ListarAtrasos(){
-
         LocalDate hoje = LocalDate.now();
 
         for(Emprestimo e : emprestimos){
             if (!e.isDevolvido() && hoje.isAfter(e.getDataDevolucaoPrevista())) {
-                
                 long atraso = ChronoUnit.DAYS.between(e.getDataDevolucaoPrevista(), hoje);
             
                 System.out.println(
                     e.getUsuario().getNome()
                     + " está com atraso de "  +
-                    atraso + " dias.");
-                System.out.println("==========================");
-            
+                    atraso + " dias."
+                );
             }
-
         }
+    }
+    public Emprestimo buscarEmprestimoAtivo(Usuario usuario) {
+        for (Emprestimo e : emprestimos) {
+            if (e.getUsuario().getId() == usuario.getId() && !e.isDevolvido()) {
+                return e;
+            }
+        }
+        return null;
     }
 }
