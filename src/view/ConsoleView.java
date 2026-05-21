@@ -30,93 +30,116 @@ public class ConsoleView {
         scanner = new Scanner(System.in);
     }
 
+    private void pausar() {
+
+            System.out.println("\nPressione ENTER para continuar...");
+            scanner.nextLine();
+        }
+
+        private void limparTela() {
+
+            for (int i = 0; i < 40; i++) {
+            System.out.println();
+            }
+        }
+
     public void iniciar() {
 
-        int opcao = -1;
+    int opcao = -1;
 
-        while (opcao != 0) {
+    while (opcao != 0) {
 
-            System.out.println("\n==============================");
-            System.out.println(" SISTEMA DE BIBLIOTECA ");
-            System.out.println("==============================");
+        limparTela();
 
-            System.out.println("1 - Listar livros");
-            System.out.println("2 - Buscar livro por título");
-            System.out.println("3 - Buscar livro por autor");
-            System.out.println("4 - Buscar livro por categoria");
-            System.out.println("5 - Realizar empréstimo");
-            System.out.println("6 - Devolver livro");
-            System.out.println("7 - Listar empréstimos");
-            System.out.println("8 - Listar atrasos");
-            System.out.println("9 - Livros mais populares");
-            System.out.println("10 - Listar usuários");
-            System.out.println("0 - Sair");
+        System.out.println("================================");
+        System.out.println("     SISTEMA DE BIBLIOTECA");
+        System.out.println("================================");
 
-            System.out.print("Escolha: ");
+        System.out.println("1 - Listar livros");
+        System.out.println("2 - Buscar livro por título");
+        System.out.println("3 - Buscar livro por autor");
+        System.out.println("4 - Buscar livro por categoria");
+        System.out.println("5 - Realizar empréstimo");
+        System.out.println("6 - Devolver livro");
+        System.out.println("7 - Listar empréstimos");
+        System.out.println("8 - Listar atrasos");
+        System.out.println("9 - Livros mais populares");
+        System.out.println("10 - Listar usuários");
+        System.out.println("0 - Sair");
 
-            try {
+        System.out.print("\nEscolha: ");
 
-                opcao = Integer.parseInt(scanner.nextLine());
+        try {
 
-                switch (opcao) {
+            opcao = Integer.parseInt(scanner.nextLine());
 
-                    case 1:
-                        livroController.listarLivros();
-                        break;
+            limparTela();
 
-                    case 2:
-                        buscarPorTitulo();
-                        break;
+            switch (opcao) {
 
-                    case 3:
-                        buscarPorAutor();
-                        break;
+                case 1:
+                    livroController.listarLivros();
+                    break;
 
-                    case 4:
-                        buscarPorCategoria();
-                        break;
+                case 2:
+                    buscarPorTitulo();
+                    break;
 
-                    case 5:
-                        realizarEmprestimo();
-                        break;
+                case 3:
+                    buscarPorAutor();
+                    break;
 
-                    case 6:
-                        devolverLivro();
-                        break;
+                case 4:
+                    buscarPorCategoria();
+                    break;
 
-                    case 7:
-                        emprestimoController.ListarEmprestimo();
-                        break;
+                case 5:
+                    realizarEmprestimo();
+                    break;
 
-                    case 8:
-                        emprestimoController.ListarAtrasos();
-                        break;
+                case 6:
+                    devolverLivro();
+                    break;
 
-                    case 9:
-                        emprestimoController.livrosMaisPopulares(
-                            livroController.getLivros()
-                        );
-                        break;
+                case 7:
+                    emprestimoController.ListarEmprestimo();
+                    break;
 
-                    case 10:
-                        usuarioController.listarUsuarios();
-                        break;
+                case 8:
+                    emprestimoController.ListarAtrasos();
+                    break;
 
-                    case 0:
-                        System.out.println("Sistema encerrado.");
-                        break;
+                case 9:
+                    emprestimoController.livrosMaisPopulares(
+                        livroController.getLivros()
+                    );
+                    break;
 
-                    default:
-                        System.out.println("Opção inválida.");
-                }
+                case 10:
+                    usuarioController.listarUsuarios();
+                    break;
 
-            } catch (NumberFormatException e) {
+                case 0:
+                    System.out.println("Sistema encerrado.");
+                    break;
 
-                System.out.println("Digite apenas números.");
+                default:
+                    System.out.println("Opção inválida.");
+            }
 
-            } catch (Exception e) {
+            if (opcao != 0) {
+                pausar();
+            }
 
-                System.out.println("Erro: " + e.getMessage());
+        } catch (NumberFormatException e) {
+
+            System.out.println("Digite apenas números.");
+            pausar();
+
+        } catch (Exception e) {
+
+            System.out.println("Erro: " + e.getMessage());
+                pausar();
             }
         }
     }
