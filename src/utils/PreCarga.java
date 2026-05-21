@@ -12,24 +12,26 @@ public class PreCarga {
         UsuarioController usuarioController
     ) {
 
-        livroController.cadastrarLivro(
-            new Livro(2008,
+        Livro livro = new Livro(
+                2008,
                 "robert martin",
                 "tecnologia",
                 "tecnologia",
                 101,
-                3)
+                3);
+            
+
+        livroController.cadastrarLivro(livro);    
+
+        Usuario usuario = new Usuario(
+            false,
+            1,
+            "email@email.com",
+            "Nome",
+            "419999999",
+            "Curitiba"
             );
 
-        usuarioController.cadastrarUsuario(
-            new Usuario(
-                false,
-                1,
-                "matheus@email.com",
-                "Matheus",
-                "419999999",
-                "Curitiba"
-            )
-        );
+        usuarioController.cadastrarUsuario(usuario);
     }
 }

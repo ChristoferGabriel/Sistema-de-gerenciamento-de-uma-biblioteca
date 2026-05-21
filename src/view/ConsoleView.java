@@ -66,6 +66,7 @@ public class ConsoleView {
         System.out.println("9 - Livros mais populares");
         System.out.println("10 - Listar usuários");
         System.out.println("11 - Cadastrar usuário");
+        System.out.println("12 - Cadastrar livro");
         System.out.println("0 - Sair");
 
         System.out.print("\nEscolha: ");
@@ -123,6 +124,10 @@ public class ConsoleView {
                 case 11:
                     cadastrarUsuario();
                 break;      
+
+                case 12:
+                    cadastrarLivro();
+                    break;
 
                 case 0:
                     System.out.println("Sistema encerrado.");
@@ -296,6 +301,51 @@ public class ConsoleView {
         } catch (Exception e) {
 
         System.out.println("Erro ao cadastrar usuário: "+ e.getMessage());
+        }
+    }
+
+    private void cadastrarLivro() {
+
+    try {
+
+        System.out.println("===== CADASTRO DE LIVRO =====");
+
+        System.out.print("Código: ");
+        int codigo = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Título: ");
+        String titulo = scanner.nextLine();
+
+        System.out.print("Autor: ");
+        String autor = scanner.nextLine();
+
+        System.out.print("Categoria: ");
+        String categoria = scanner.nextLine();
+
+        System.out.print("Ano de publicação: ");
+        int ano = Integer.parseInt(scanner.nextLine());
+
+        System.out.print("Quantidade disponível: ");
+        int quantidade = Integer.parseInt(scanner.nextLine());
+
+        Livro livro = new Livro(
+            ano,
+            autor,
+            titulo,
+            categoria,
+            codigo,
+            quantidade
+        );
+
+            livroController.cadastrarLivro(livro);
+
+        } catch (NumberFormatException e) {
+
+        System.out.println("Digite apenas números nos campos numéricos.");
+
+        } catch (Exception e) {
+
+        System.out.println("Erro ao cadastrar livro: "+ e.getMessage());
         }
     }
 }

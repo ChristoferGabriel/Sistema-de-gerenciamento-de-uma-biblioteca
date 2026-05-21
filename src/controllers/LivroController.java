@@ -19,13 +19,26 @@ import model.Livro;
 
         public void cadastrarLivro(Livro livro) {
 
-        if(BuscarPorcodigo(livro.getCodigo()) != null){
-            System.out.println("Já existe um livro com esse codigo");
-            return;
+    try {
+
+        if (livro == null) {
+
+            throw new Exception("Livro inválido.");
         }
 
-            livros.add(livro);
-        System.out.println("livro cadastrado com sucesso");
+        if (BuscarPorcodigo(livro.getCodigo()) != null) {
+
+            throw new Exception("Já existe livro com esse código.");
+        }
+
+        livros.add(livro);
+
+            System.out.println("Livro cadastrado com sucesso.");
+
+        } catch (Exception e) {
+
+                System.out.println("Erro ao cadastrar livro: "+ e.getMessage());
+            }
         }
 
         public List<Livro> buscarPorTitulo(String titulo) {
@@ -65,7 +78,6 @@ import model.Livro;
 
             if (livro.getCategoria().toLowerCase()
                 .contains(categoria.toLowerCase())) {
-
                 encontrados.add(livro);
                 }
             }
