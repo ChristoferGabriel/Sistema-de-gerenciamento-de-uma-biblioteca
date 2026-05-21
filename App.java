@@ -2,14 +2,8 @@ import controllers.EmprestimoController;
 import controllers.LivroController;
 import model.Livro;
 import model.Usuario;
-
-public class App {
-    public static void main(String[] args) throws Exception {
-        import controllers.EmprestimoController;
-import controllers.LivroController;
-import model.Livro;
-import model.Usuario;
 import view.ConsoleView;
+
 
 public class App {
     public static void main(String[] args) {
@@ -27,7 +21,5 @@ public class App {
         view.adicionarUsuario(usuario1);
         view.adicionarUsuario(usuario2);
         view.iniciar();
-    }
-}
     }
 }

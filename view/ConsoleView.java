@@ -2,12 +2,11 @@ package view;
 
 import controllers.EmprestimoController;
 import controllers.LivroController;
+import java.util.ArrayList;
+import java.util.Scanner;
 import model.Emprestimo;
 import model.Livro;
 import model.Usuario;
-
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class ConsoleView {
     private LivroController livroController;
