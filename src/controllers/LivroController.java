@@ -14,12 +14,36 @@ import model.Livro;
         }
 
         public void cadastrarLivro(Livro livro) {
+
+        if(BuscarPorcodigo(livro.getCodigo()) != null){
+            System.out.println("Já existe um livro com esse codigo");
+            return;
+        }
+        
             livros.add(livro);
         System.out.println("livro cadastrado com sucesso");
         }
 
-        public void BuscarPorId(){
+        public Livro BuscarPorcodigo(int codigo){
+
+            for(Livro livro: livros){
+                if(livro.getCodigo() == codigo){
+                    return livro;
+                }
+            }
+            return null;
             
+        }
+
+        public boolean removerLivro(int codigo){
+
+            Livro livro = BuscarPorcodigo(codigo);
+
+            if (livro != null) {
+                livros.remove(livro);
+                return true;
+            }
+            return false;
         }
 
         public void listarLivros() {
