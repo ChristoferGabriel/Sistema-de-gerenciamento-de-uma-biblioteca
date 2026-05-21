@@ -2,7 +2,6 @@ package utils;
 
 import controllers.LivroController;
 import controllers.UsuarioController;
-
 import model.Livro;
 import model.Usuario;
 
@@ -14,15 +13,13 @@ public class PreCarga {
     ) {
 
         livroController.cadastrarLivro(
-            new Livro(
-                2008,
-                "Robert Martin",
-                "Clean Code",
-                "Tecnologia",
+            new Livro(2008,
+                "robert martin",
+                "tecnologia",
+                "tecnologia",
                 101,
-                3
-            )
-        );
+                3)
+            );
 
         usuarioController.cadastrarUsuario(
             new Usuario(

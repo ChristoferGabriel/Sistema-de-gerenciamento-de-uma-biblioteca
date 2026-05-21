@@ -1,16 +1,34 @@
 package model;
 
+import java.time.LocalDate;
+
 public class Livro extends ItemBiblioteca{
-    private String autor, titulo;
     private int anoPublicacao, totalEmprestimos;
+    private String autor, titulo, categoria;
 
-
-    public Livro(int anoPublicacao, String autor, String titulo, int totalEmprestimos, String categoria, int codigo, int quantDisponivel) {
-        super(categoria, codigo, quantDisponivel);
+    public Livro(int anoPublicacao, String autor, String categoria, String titulo, int codigo, int quantDisponivel, int totalEmprestimos) {
+        super(codigo, quantDisponivel);
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;
+        this.categoria = categoria;
         this.titulo = titulo;
+        this.totalEmprestimos = 0;
+    }
+
+    public int getTotalEmprestimos() {
+        return totalEmprestimos;
+    }
+
+    public void setTotalEmprestimos(int totalEmprestimos) {
         this.totalEmprestimos = totalEmprestimos;
+    }
+    
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getAutor() {
@@ -37,21 +55,37 @@ public class Livro extends ItemBiblioteca{
         this.anoPublicacao = anoPublicacao;
     }
 
-    
-    public int getTotalEmprestimos() {
-        return totalEmprestimos;
-    }
-
-    public void setTotalEmprestimos(int totalEmprestimos) {
-        this.totalEmprestimos = totalEmprestimos;
+    @Override
+    public String toString() {
+    return
+        "Título: " + titulo +
+        "\nAutor: " + autor +
+        "\nCategoria: " + getCategoria() +
+        "\nCódigo: " + getCodigo() +
+        "\nDisponíveis: " + getQuantDisponivel();
     }
 
     @Override
-    public String toString() {
-        return "Livro {autor = " + autor + 
-                ", titulo = " + titulo + 
-                ", anoPublicacao = " + anoPublicacao + 
-                 "Codigo = " + getCodigo() + "}";
-    }  
+    public boolean estaDisponivel() {
+        return getQuantDisponivel() > 0;
+    }
 
+    @Override
+    public void registrarEmprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucaoPrevista) {
+        if(getQuantDisponivel() > 0){
+            setQuantDisponivel(getQuantDisponivel() - 1);
+        }
+    }
+
+    @Override
+    public void registrarDevolucao(LocalDate dataDevolucaoEfetiva) {
+        setQuantDisponivel(getQuantDisponivel() + 1);
+    }
+
+    @Override
+    public String getCodigoIdentificador() {
+        return String.valueOf(getCodigo());
+    }
+    
 }
+

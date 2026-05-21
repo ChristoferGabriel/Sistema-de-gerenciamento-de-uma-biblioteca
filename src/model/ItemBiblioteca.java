@@ -1,11 +1,11 @@
 package model;
 
-public abstract class ItemBiblioteca {
-    private int quantDisponivel, codigo;
-    private String categoria;
+import interfaces.Gerenciavel;
 
-    public ItemBiblioteca(String categoria, int codigo, int quantDisponivel) {
-        this.categoria = categoria;
+public abstract class ItemBiblioteca implements Gerenciavel{
+    private int quantDisponivel, codigo;
+
+    public ItemBiblioteca(int codigo, int quantDisponivel) {
         this.codigo = codigo;
         this.quantDisponivel = quantDisponivel;
     }
@@ -16,14 +16,6 @@ public abstract class ItemBiblioteca {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public int getQuantDisponivel() {

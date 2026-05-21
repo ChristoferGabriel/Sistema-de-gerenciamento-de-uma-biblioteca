@@ -2,11 +2,10 @@ package interfaces;
 
 import java.time.LocalDate;
 
-
 public interface Gerenciavel {
+
     boolean estaDisponivel();
-    void RegistrarEmprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucaoPrevista);
-    void RegistrarDevolucao(LocalDate dataDevolucaoEfetiva);
-    String getCodigoIdentificador();    
-    
+    void registrarEmprestimo(LocalDate dataEmprestimo,LocalDate dataDevolucaoPrevista);
+    void registrarDevolucao(LocalDate dataDevolucaoEfetiva);
+    String getCodigoIdentificador();
 }

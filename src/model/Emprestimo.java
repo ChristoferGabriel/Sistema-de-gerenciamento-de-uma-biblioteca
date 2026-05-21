@@ -22,14 +22,13 @@ public class Emprestimo {
     }
 
     public Emprestimo(Livro livro, Usuario usuario){
-    this.dataEmprestimo = LocalDate.now();
-    this.dataDevolucaoPrevista = LocalDate.now().plusDays(7);
-    this.devolvido = false;
-    this.id = 0;
-    this.livro = livro;
-    this.usuario = usuario;
-}
-
+        this.dataEmprestimo = LocalDate.now();
+        this.dataDevolucaoPrevista = LocalDate.now().plusDays(7);
+        this.devolvido = false;
+        this.id = 0;
+        this.livro = livro;
+        this.usuario = usuario;
+    }
 
     public void devolverLivro(){
         dataDevolucaoEfetiva = LocalDate.now();
@@ -91,5 +90,6 @@ public class Emprestimo {
     public void setDataDevolucaoEfetiva(LocalDate dataDevolucaoEfetiva) {
         this.dataDevolucaoEfetiva = dataDevolucaoEfetiva;
     }
+
 }
 
