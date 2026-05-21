@@ -3,6 +3,7 @@ package controllers;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 import model.Emprestimo;
 import model.Livro;
 import model.Usuario;
@@ -14,6 +15,7 @@ public class EmprestimoController {
         emprestimos = new ArrayList<>();
     }
 
+    
     public void RealizarEmprestimos(Usuario usuario, Livro livro){
         if (usuario.isEmpretivoAtivo()){
             System.out.println("Usuario ja possui um livro emprestado");
@@ -69,6 +71,24 @@ public class EmprestimoController {
         }
     }
 
+    public void livrosMaisPopulares(List<Livro> livros) {
+
+        livros.sort((l1, l2) ->
+            Integer.compare(
+                l2.getTotalEmprestimos(),
+                l1.getTotalEmprestimos()
+            )
+        );
+
+        for (Livro l : livros) {
+            System.out.println(
+                l.getTitulo() +
+                " - Empréstimos: " +
+                l.getTotalEmprestimos()
+            );
+        }
+    }
+    
     public void ListarEmprestimo(){
         for( Emprestimo e : emprestimos){
             System.out.println("Livro: " + e.getLivro().getTitulo());
@@ -78,17 +98,43 @@ public class EmprestimoController {
         }
     }
 
-    public void ListarAtrasos(){
+    public void ListarAtrasos() {
+
         LocalDate hoje = LocalDate.now();
 
-        for(Emprestimo e : emprestimos){
-            if (!e.isDevolvido() && hoje.isAfter(e.getDataDevolucaoPrevista())) {
-                long atraso = ChronoUnit.DAYS.between(e.getDataDevolucaoPrevista(), hoje);
-            
+        emprestimos.sort((e1, e2) -> {
+
+            long atraso1 =
+                ChronoUnit.DAYS.between(
+                    e1.getDataDevolucaoPrevista(),
+                    hoje
+                );
+
+            long atraso2 =
+                ChronoUnit.DAYS.between(
+                    e2.getDataDevolucaoPrevista(),
+                    hoje
+                );
+
+            return Long.compare(atraso2, atraso1);
+        });
+
+        for (Emprestimo e : emprestimos) {
+
+            if (!e.isDevolvido()
+                && hoje.isAfter(e.getDataDevolucaoPrevista())) {
+
+                long atraso =
+                    ChronoUnit.DAYS.between(
+                        e.getDataDevolucaoPrevista(),
+                        hoje
+                    );
+
                 System.out.println(
                     e.getUsuario().getNome()
-                    + " está com atraso de "  +
-                    atraso + " dias."
+                    + " está com "
+                    + atraso
+                    + " dias de atraso."
                 );
             }
         }

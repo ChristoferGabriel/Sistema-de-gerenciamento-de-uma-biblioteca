@@ -19,9 +19,54 @@ import model.Livro;
             System.out.println("Já existe um livro com esse codigo");
             return;
         }
-        
+
             livros.add(livro);
         System.out.println("livro cadastrado com sucesso");
+        }
+
+        public List<Livro> buscarPorTitulo(String titulo) {
+
+            List<Livro> encontrados = new ArrayList<>();
+
+            for (Livro livro : livros) {
+                if (livro.getTitulo().toLowerCase()
+                .contains(titulo.toLowerCase())) {
+
+                    encontrados.add(livro);
+                }
+            }
+
+            return encontrados;
+        }
+
+        public List<Livro> buscarPorAutor(String autor) {
+
+        List<Livro> encontrados = new ArrayList<>();
+
+            for (Livro livro : livros) {
+                if (livro.getAutor().toLowerCase()
+                .contains(autor.toLowerCase())) {
+
+                encontrados.add(livro);
+                }
+            }
+
+            return encontrados;
+        }
+        public List<Livro> buscarPorCategoria(String categoria) {
+
+        List<Livro> encontrados = new ArrayList<>();
+
+        for (Livro livro : livros) {
+
+            if (livro.getCategoria().toLowerCase()
+                .contains(categoria.toLowerCase())) {
+
+                encontrados.add(livro);
+                }
+            }
+
+            return encontrados;
         }
 
         public Livro BuscarPorcodigo(int codigo){
