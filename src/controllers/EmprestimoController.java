@@ -81,11 +81,7 @@ public class EmprestimoController {
         );
 
         for (Livro l : livros) {
-            System.out.println(
-                l.getTitulo() +
-                " - Empréstimos: " +
-                l.getTotalEmprestimos()
-            );
+            System.out.println( l.getTitulo() + " - Empréstimos: " + l.getTotalEmprestimos());
         }
     }
     
@@ -131,11 +127,7 @@ public class EmprestimoController {
                     );
 
                 System.out.println(
-                    e.getUsuario().getNome()
-                    + " está com "
-                    + atraso
-                    + " dias de atraso."
-                );
+                    e.getUsuario().getNome() + " está com " + atraso + " dias de atraso.");
             }
         }
     }
